@@ -32,9 +32,19 @@ ALLOWED_HOSTS = []
 
 THIRD_PARTY_APPS = [
     'rest_framework',
+    'corsheaders'
 ]
 
 CUSTOM_APPS = [
+    'users.apps.UsersConfig',
+    'books.apps.BooksConfig',
+    'categories.apps.CategoriesConfig',
+    'authors.apps.AuthorsConfig',
+    'bookshelfs.apps.BookshelfsConfig',
+    'carts.apps.CartsConfig',
+    'orders.apps.OrdersConfig',
+    'reviews.apps.ReviewsConfig',
+    'wishes.apps.WishesConfig',
 ]
 
 SYSTEM_APPS = [
@@ -57,6 +67,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -139,3 +151,11 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = "users.User"
+
+CORS_ALLOWED_ORIGINS = ["http://127.0.0.1:3000"]
+
+CORS_ALLOW_CREDENTIALS = True
+
+CSRF_TRUSTED_ORIGINS = ["http://127.0.0.1:3000"]
