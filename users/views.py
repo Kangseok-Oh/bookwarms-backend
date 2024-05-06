@@ -6,7 +6,7 @@ from rest_framework.views import APIView
 from rest_framework.exceptions import ParseError, NotFound
 from rest_framework.permissions import IsAuthenticated
 from .models import User
-from .serializers import LogInSerializer, SignUpSerializer, UserInfoSerializer
+from .serializers import UserInfoSerializer
 
 class LogIn(APIView):
     def post(self, request):
@@ -49,7 +49,6 @@ class KakaoLogIn(APIView):
                 }
             )
             user_data = user_data.json()
-            print(user_data)
             kakao_account = user_data.get('kakao_account')
             profile = kakao_account.get('profile')
 
