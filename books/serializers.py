@@ -80,3 +80,20 @@ class BookShelfBookSerializer(ModelSerializer):
     
     def get_book_author_name(self, book):
         return book.book_author_id.author_name
+    
+
+class CartBookSerializer(ModelSerializer):
+    book_author_name = SerializerMethodField()
+
+    class Meta:
+        model = Book
+        fields = (
+            "book_isbn",
+            "book_cover_path",
+            "book_name",
+            "book_price",
+            "book_author_name"
+        )
+
+    def get_book_author_name(self, book):
+        return book.book_author_id.author_name

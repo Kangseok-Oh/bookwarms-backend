@@ -12,8 +12,8 @@ class Cart(models.Model):
             return 0
         else:
             total_price = 0
-            for book_price in self.cartitem_set.all().values("book__book_price"):
-                total_price += book_price["book__book_price"]
+            for book_price in self.cartitem_set.all().values("cart_book_isbn__book_price"):
+                total_price += book_price["cart_book_isbn__book_price"]
             return total_price
 
 
