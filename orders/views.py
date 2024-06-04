@@ -28,12 +28,13 @@ class Order(APIView):
     def getNewId(self):
         now = datetime.now()
         str_time = now.strftime("%Y%m%d")
-        # id = str_time + format(Order.sequence, '08')
-        try:
-            final_order = OrderModel.objects.filter(order_id__startswith = str_time)
+        
+        final_order = OrderModel.objects.filter(order_id__startswith = str_time)
+
+        if final_order:
             final_order_id = final_order.aggregate(order_id = Max('order_id'))
             id = str(int(final_order_id.get("order_id")) + 1)
-        except OrderModel.DoesNotExist:
+        else:
             id = str_time + format(1, '08')
 
         return id

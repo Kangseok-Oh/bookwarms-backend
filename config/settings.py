@@ -45,6 +45,7 @@ CUSTOM_APPS = [
     'orders.apps.OrdersConfig',
     'reviews.apps.ReviewsConfig',
     'wishes.apps.WishesConfig',
+    'trades.apps.TradesConfig',
 ]
 
 SYSTEM_APPS = [

@@ -12,9 +12,9 @@ class CartItemSerializer(ModelSerializer):
         )
 
 class CartListSerializer(ModelSerializer):
-    cart_total_items = SerializerMethodField();
-    cart_total_price = SerializerMethodField();
-    cartitem_set = CartItemSerializer(many = True);
+    cart_total_items = SerializerMethodField()
+    cart_total_price = SerializerMethodField()
+    cartitem_set = CartItemSerializer(many = True)
 
     class Meta:
         model = Cart

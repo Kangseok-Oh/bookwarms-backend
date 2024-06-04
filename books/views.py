@@ -2,7 +2,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.exceptions import NotFound
 from .models import Book
-from .serializers import BookDetailSerializer, CategoryBookListSerializer
+from .serializers import BookDetailSerializer, CategoryBookListSerializer, CartBookSerializer
 
 class CategoryBookList(APIView):
     def get(self, request, category_id):
@@ -21,3 +21,13 @@ class BookDetail(APIView):
             raise NotFound
         serializer = BookDetailSerializer(book)
         return Response(serializer.data)
+    
+class TradeBook(APIView):
+    def get(self, request, book_isbn):
+        try:
+            book = Book.objects.get(book_isbn = book_isbn)
+        except:
+            raise NotFound
+        serializer = CartBookSerializer(book)
+        return Response(serializer.data)
+    

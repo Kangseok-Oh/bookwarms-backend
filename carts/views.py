@@ -25,7 +25,7 @@ class AddCart(APIView):
         book_isbn = request.data.get('book_isbn')
         
         try:
-            bookshelf = BookshelfItem.objects.get(bookshelf_book_isbn = book_isbn)
+            bookshelf = BookshelfItem.objects.get(bookshelf_user_email = user_email, bookshelf_book_isbn = book_isbn)
             return Response({"error": "이미 구매한 책입니다."})
         
         except BookshelfItem.DoesNotExist:
