@@ -41,7 +41,7 @@ class PurchaseList(APIView):
 class ImmediateSellPrice(APIView):
     def get(self, request, book_isbn):
         try:
-            sell = SellModel.objects.aggregate(sell_price = Min("sell_price"))
+            sell = SellModel.objects.filter(sell_book_isbn = book_isbn).aggregate(sell_price = Min("sell_price"))
         except SellModel.DoesNotExist:
             raise NotFound
         return Response(sell)
@@ -49,7 +49,7 @@ class ImmediateSellPrice(APIView):
 class ImmediatePurPrice(APIView):
     def get(self, request, book_isbn):
         try:
-            purchase = Pur.objects.aggregate(purchase_price = Max("purchase_price"))
+            purchase = Pur.objects.filter(purchase_book_isbn = book_isbn).aggregate(purchase_price = Max("purchase_price"))
         except Pur.DoesNotExist:
             raise NotFound
         return Response(purchase)
