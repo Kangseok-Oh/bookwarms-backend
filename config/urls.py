@@ -17,6 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+# 각 앱별 API URL 매핑
+# 자세한 URL은 각 앱 내의 urls.py를 확인
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/user/', include("users.urls")),

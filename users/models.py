@@ -32,11 +32,13 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
+# 유저 모델
 class User(AbstractBaseUser, PermissionsMixin):
     class GenderChoices(models.TextChoices):
         MALE = ("male", "Male")
         FEMALE = ("female", "Female") 
 
+    # 컬럼들
     user_email = models.EmailField(primary_key=True, blank=False)
     user_name = models.CharField(max_length=30, null=False, blank=False)
     user_gender = models.CharField(max_length=10, choices=GenderChoices.choices, null=True, blank=True)
@@ -49,6 +51,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
 
+    # 관리자 로그인 시 형식 지정
     USERNAME_FIELD = "user_email"
     REQUIRED_FIELDS = ['user_name', 'password']
 

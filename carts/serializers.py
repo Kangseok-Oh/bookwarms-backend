@@ -2,7 +2,9 @@ from rest_framework.serializers import ModelSerializer, SerializerMethodField
 from .models import Cart, CartItem
 from books.serializers import CartBookSerializer
 
+# 장바구니 내 책 json 데이터 형식 지정
 class CartItemSerializer(ModelSerializer):
+    # 책 isbn으로 책 json 데이터 가져오기
     cart_book_isbn = CartBookSerializer(read_only=True)
 
     class Meta:

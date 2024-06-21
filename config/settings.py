@@ -29,12 +29,12 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
+# 사용한 라이브러리들
 THIRD_PARTY_APPS = [
     'rest_framework',
     'corsheaders'
 ]
-
+# 작성한 앱들
 CUSTOM_APPS = [
     'users.apps.UsersConfig',
     'books.apps.BooksConfig',
@@ -95,7 +95,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-
+# 데이터베이스 정보
 DATABASES = {
     'default': {
         'ENGINE': 'mysql.connector.django',
@@ -135,7 +135,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
-
+# 시간대 설정
 TIME_ZONE = 'Asia/Seoul'
 
 USE_I18N = True
@@ -152,11 +152,11 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
+# 회원 인증할 모델
 AUTH_USER_MODEL = "users.User"
-
+# 통신을 허용할 도메인 설정(프론트 연결용)
 CORS_ALLOWED_ORIGINS = ["http://127.0.0.1:3000"]
-
+# 프론트에서 쿠키 수신 허용
 CORS_ALLOW_CREDENTIALS = True
-
+# 아래 도메인에서 온 요청 신뢰
 CSRF_TRUSTED_ORIGINS = ["http://127.0.0.1:3000"]

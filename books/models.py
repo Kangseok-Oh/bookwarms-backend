@@ -1,6 +1,8 @@
 from django.db import models
 
+# 책 모델
 class Book(models.Model):
+    # 컬럼들
     book_isbn = models.CharField(max_length=13, primary_key=True)
     book_name = models.CharField(max_length=100, null=False)
     book_price = models.PositiveIntegerField(null=False)
@@ -14,6 +16,7 @@ class Book(models.Model):
     book_category_id = models.ForeignKey("categories.Category", null= True, on_delete=models.SET_NULL)
     book_author_id = models.ForeignKey("authors.Author", null = True, on_delete=models.SET_NULL)
 
+    # 책 평점  
     def book_rating(self):
         review_count = self.review_set.count()
         if review_count == 0:
@@ -24,6 +27,7 @@ class Book(models.Model):
                 total_rating += review["review_rating"]
             return round(total_rating/ review_count, 2)
         
+    # 책 리뷰 수
     def book_review_count(self):
         return self.review_set.count()
 

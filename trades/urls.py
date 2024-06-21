@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
 
+# URL과 뷰 클래스 매핑
 urlpatterns = [
     path('tradechart/<str:book_isbn>', views.TradeChart.as_view()),
     path('selllist/<str:book_isbn>', views.SellList.as_view()),
